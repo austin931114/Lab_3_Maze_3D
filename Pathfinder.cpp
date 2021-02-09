@@ -36,12 +36,14 @@ string Pathfinder::toString() const {
 			for(int row = 0; row < ROW_SIZE; row++) {
 				for(int col = 0; col < COL_SIZE; col++) {
 					maze_grid[row][col][hei] = rand()% 2;
-					cout << maze_grid[row][col][hei] << endl;
+					// cout << maze_grid[row][col][hei];
 				}
-
+				// cout << endl;
 			}	
-
+			// cout << endl;
 		}
+		maze_grid[0][0][0] = 1;
+		maze_grid[4][4][4] = 1;
 	}
 	//-----------------------------------------------------------------------------------------
 	
@@ -66,30 +68,43 @@ string Pathfinder::toString() const {
 		ifstream file (file_name.c_str());
 		if (file.is_open()) {
 			string line;
-			int row_count = 0;
+
 			for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
 				for(int row = 0; row < ROW_SIZE; row++) {
 					getline(file, line);
-						if (getline(file, line)) {
+						if (line.length() == 10) {
 							stringstream ss(line);
 							for(int col = 0; col < COL_SIZE; col++) {
 								int value;
 								ss >> value;
+								if (value == 0 || value == 1) {
 								// cout << "["<<row<<"]["<<col<<"]["<<hei<<"]="<<value<<endl;
 								maze_grid[row][col][hei] = value;
+								}
+								else {
+									cout << "maze contains some number other than 0 and 1\n";
+									return false;
+								}
 							}
 						}
 						else {
 							cout << "maze does not consists only of 125 1s and 0s\n";
+							return false;
 						}
 				}
 			}
 
+			if (maze_grid[0][0][0] == 1 && maze_grid[4][4][4] == 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
 		}
 		else {
 			cout << "file is not open \n";
+			return false;
 		}
-	    return(true);
 	}
 	//-----------------------------------------------------------------------------------------
 
@@ -112,19 +127,19 @@ string Pathfinder::toString() const {
 	    // Attempt to find a path from each neighbor.
 	    // Tentatively mark cell as on path.
 	    grid[r][c][h] = PATH;
-	  //   if (find_maze_path(grid, r - 1, c, h)
-	  //      || find_maze_path(grid, r + 1, c, h)
-	  //      || find_maze_path(grid, r, c - 1, h)
-	  //      || find_maze_path(grid, r, c + 1, h ) 
-		// 		 || find_maze_path(grid, r, c , h + 1)
-		// 		 || find_maze_path(grid, r, c , h - 1)) {
-	  //     solution.push_back("("+to_string(r)+","+to_string(c)+","+to_string(h)+")");
-	  //    return true;
-	  //   }
-	  //   else {
-	  //    grid[r][c][h] = TEMPORARY;  // Dead end.
-	  //    return false;
-	  //  }
+	    if (find_maze_path(grid, r - 1, c, h)
+	       || find_maze_path(grid, r + 1, c, h)
+	       || find_maze_path(grid, r, c - 1, h)
+	       || find_maze_path(grid, r, c + 1, h ) 
+				 || find_maze_path(grid, r, c , h + 1)
+				 || find_maze_path(grid, r, c , h - 1)) {
+	      solution.push_back("("+to_string(r)+","+to_string(c)+","+to_string(h)+")");
+	     return true;
+	    }
+	    else {
+	     grid[r][c][h] = TEMPORARY;  // Dead end.
+	     return false;
+	   }
 	  }
 	}
 	  //Part 3-----------------------------------------------------------------------------------
