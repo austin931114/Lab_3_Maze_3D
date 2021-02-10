@@ -56,7 +56,16 @@ int main() {
 		ofs.close();
 	}
 	std::cout << "end" << std::endl; // indicate that the program has successfuly executed all instructions
-	return 0;
+	// string temp = "1a";
+	// stringstream name(temp);
+	// char i;
+	// char j;
+
+	// name >> i;
+	// cout << i << endl;
+	// name >> j;
+	// cout << j << endl;
+	 return 0;
 }
 
 void parse_instruction(std::string temp, std::ofstream &ofs, Pathfinder* aptr) {

@@ -65,33 +65,48 @@ string Pathfinder::toString() const {
 	* Returns:		bool
 	*				True if the maze is imported correctly; false otherwise
 	*/
-	bool Pathfinder::importMaze(string file_name)
-	{
+	bool Pathfinder::importMaze(string file_name) {
 		cout << "importMaze from "<<file_name<<endl;
 		ifstream file (file_name.c_str());
 		int count = 0;
 		if (file.is_open()) {
 			string line;
-
 			for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
 				for(int row = 0; row < ROW_SIZE; row++) {
-					getline(file, line);
-							stringstream ss(line);
-							for(int col = 0; col < COL_SIZE; col++) {
-								int value;
-								ss >> value;
-								if (value == 0 || value == 1) {
+						getline(file, line);
+						if (file.bad() || file.fail()) {
+							return false; 
+						}
+						for (int i = 0; i < line.size(); i++){
+							if (!isdigit(line.at(i)) && line.at(i) != ' ') {
+								return false;
+							}
+						}
+				
+						stringstream ss(line);
+						
+						for(int col = 0; col < COL_SIZE; col++) {
+							int value;
+							ss >> value;
+							if (value == 0 || value == 1) {
 									count++;
-								// cout << "["<<row<<"]["<<col<<"]["<<hei<<"]="<<value<<endl;
-									maze_grid[row][col][hei] = value;
-								}
-								else {
-									cout << "maze contains some number other than 0 and 1\n";
-									return false;
-								}
+							// cout << "["<<row<<"]["<<col<<"]["<<hei<<"]="<<value<<endl;
+								maze_grid[row][col][hei] = value;
+							}
+							else {
+								cout << "maze contains some number other than 0 and 1\n";
+								return false;	
 							}
 						}
 				}
+						file.ignore();
+			} 
+			getline(file, line);
+			for (int i = 0; i << line.size(); ++i) {
+				if (line.at(i) == 1) {
+					return false;
+				}
+			}
 				
 				if (maze_grid[0][0][0] != 1 || maze_grid[4][4][4] != 1 || count != 125) {
 					return false;
