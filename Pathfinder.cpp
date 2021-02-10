@@ -14,7 +14,12 @@ string Pathfinder::toString() const {
 		for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
 			for(int row = 0; row < ROW_SIZE; row++) {
 				for(int col = 0; col < COL_SIZE; col++) {
-					ss << maze_grid[row][col][hei] << " ";
+					if (col == 4) {
+						ss << maze_grid[row][col][hei];
+					}
+					else {
+						ss << maze_grid[row][col][hei] << " ";
+					}
 				}
 				ss << endl;
 			}	
@@ -101,14 +106,11 @@ string Pathfinder::toString() const {
 				}
 						file.ignore();
 			} 
-			getline(file, line);
-			for (int i = 0; i << line.size(); ++i) {
-				if (line.at(i) == 1) {
-					return false;
-				}
+			if (getline(file, line)) {
+				return false;
 			}
 				
-				if (maze_grid[0][0][0] != 1 || maze_grid[4][4][4] != 1 || count != 125) {
+			if (maze_grid[0][0][0] != 1 || maze_grid[4][4][4] != 1 || count != 125) {
 					return false;
 				}
 		}
