@@ -1,4 +1,4 @@
-importMaze Mazes/Solvable1.txt True
+importMaze Mazes/Solvable1.txt False
 toString 
 1 1 0 1 0 
 0 0 0 1 0 
@@ -6,31 +6,31 @@ toString
 1 0 0 0 0 
 1 0 0 0 0 
 
+0 0 0 0 0 
 0 1 0 1 0 
 0 0 0 0 0 
 0 0 0 0 0 
 0 0 0 0 0 
-1 0 0 0 0 
 
+1 0 0 0 0 
+0 0 0 0 0 
 0 1 0 1 0 
 0 1 0 0 0 
 0 1 1 1 0 
+
 0 0 0 0 0 
 1 0 0 0 0 
-
+0 0 0 0 0 
 0 0 0 1 0 
 0 0 0 0 0 
+
 0 0 0 1 0 
 0 0 0 0 0 
 1 0 0 0 0 
-
-0 0 0 1 0 
-0 0 0 1 0 
-0 0 0 1 0 
 0 0 0 0 0 
-1 1 1 1 1 
+0 0 0 1 0 
 
-importMaze Mazes/Solvable2.txt True
+importMaze Mazes/Solvable2.txt False
 toString
 1 0 1 1 1 
 1 1 1 1 0 
@@ -38,29 +38,29 @@ toString
 0 1 1 0 0 
 0 0 0 0 1 
 
+1 1 1 1 1 
 1 0 1 0 0 
 1 0 1 0 0 
 1 0 0 0 1 
 1 0 0 1 1 
-0 0 1 1 1 
 
+0 0 1 1 1 
+1 1 1 1 1 
 1 1 0 0 0 
 0 1 0 0 1 
 1 0 0 0 0 
+
 0 0 0 1 1 
 0 1 1 0 0 
-
+0 0 0 0 0 
 0 1 1 1 0 
 1 1 0 1 1 
+
 0 1 0 1 1 
 0 0 1 0 0 
 0 1 0 1 1 
-
+1 1 1 1 1 
 0 0 1 1 0 
-0 0 0 0 0 
-0 1 1 0 1 
-0 1 1 1 0 
-0 1 1 1 1 
 
 importMaze Mazes/Solvable3.txt True
 toString
@@ -94,7 +94,7 @@ toString
 1 1 1 1 1 
 1 1 1 1 1 
 
-importMaze Mazes/Unsolvable1.txt True
+importMaze Mazes/Unsolvable1.txt False
 toString
 1 1 0 1 0 
 0 0 0 1 0 
@@ -102,31 +102,31 @@ toString
 1 0 0 0 0 
 1 0 0 0 0 
 
+0 0 0 0 0 
 0 1 0 1 0 
 0 0 0 0 0 
 0 0 0 0 0 
 0 0 0 0 0 
-1 0 0 0 0 
 
+1 0 0 0 0 
+0 0 0 0 0 
 0 1 0 1 0 
 0 1 0 0 0 
 0 1 1 1 0 
+
 0 0 0 0 0 
 1 0 0 0 0 
-
+0 0 0 0 0 
 0 0 0 1 0 
 0 0 0 0 0 
+
 0 0 0 1 0 
 0 0 0 0 0 
 1 0 0 0 0 
-
-0 0 0 1 0 
-0 0 0 1 0 
-0 0 0 1 0 
 0 0 0 0 0 
-1 1 1 0 1 
+0 0 0 1 0 
 
-importMaze Mazes/Unsolvable2.txt True
+importMaze Mazes/Unsolvable2.txt False
 toString
 1 0 1 1 1 
 1 1 1 1 0 
@@ -134,29 +134,29 @@ toString
 0 1 1 0 0 
 0 0 0 0 1 
 
+1 1 1 1 1 
 1 0 1 0 0 
 1 0 1 0 0 
 1 0 0 0 1 
 1 0 0 1 1 
-0 0 1 1 1 
 
+0 0 1 1 1 
+1 1 1 1 1 
 1 1 0 0 0 
 0 1 0 0 1 
 1 0 0 0 0 
+
 0 0 0 1 1 
 0 1 1 0 0 
-
+0 0 0 0 0 
 0 1 1 1 0 
 1 1 0 1 1 
+
 0 1 0 1 1 
 0 0 1 0 0 
 0 1 0 1 1 
-
+1 1 1 1 1 
 0 0 1 1 0 
-0 0 0 0 0 
-0 1 1 0 1 
-0 1 1 1 0 
-0 1 1 0 1 
 
 importMaze Mazes/Unsolvable3.txt True
 toString
@@ -182,11 +182,11 @@ toString
 1 1 1 1 1 
 1 1 1 1 1 
 1 1 1 1 1 
-1 1 1 1 0 
+1 1 1 1 1 
 
 1 1 1 1 1 
 1 1 1 1 1 
-1 1 1 1 1 
 1 1 1 1 0 
-1 1 1 0 1 
+0 0 0 0 0 
+1 1 1 1 1 
 

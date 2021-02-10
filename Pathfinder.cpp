@@ -69,18 +69,19 @@ string Pathfinder::toString() const {
 	{
 		cout << "importMaze from "<<file_name<<endl;
 		ifstream file (file_name.c_str());
+		int count = 0;
 		if (file.is_open()) {
 			string line;
 
 			for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
 				for(int row = 0; row < ROW_SIZE; row++) {
 					getline(file, line);
-						if (line.length() != 0) {
 							stringstream ss(line);
 							for(int col = 0; col < COL_SIZE; col++) {
 								int value;
 								ss >> value;
 								if (value == 0 || value == 1) {
+									count++;
 								// cout << "["<<row<<"]["<<col<<"]["<<hei<<"]="<<value<<endl;
 									maze_grid[row][col][hei] = value;
 								}
@@ -90,21 +91,13 @@ string Pathfinder::toString() const {
 								}
 							}
 						}
-						else {
-							cout << "maze does not consists only of 125 1s and 0s\n";
-							return false;
-						}
 				}
-				file.ignore();
-			}
-
-			if (maze_grid[0][0][0] == 1 && maze_grid[4][4][4] == 1) {
-				return true;
-			}
-			else {
-				return false;
-			}
+				
+				if (maze_grid[0][0][0] != 1 || maze_grid[4][4][4] != 1 || count != 125) {
+					return false;
+				}
 		}
+
 		else {
 			cout << "file is not open \n";
 			return false;
