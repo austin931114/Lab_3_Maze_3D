@@ -10,14 +10,17 @@
 
 string Pathfinder::toString() const {
 		stringstream ss;
+		
 		for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
 			for(int row = 0; row < ROW_SIZE; row++) {
 				for(int col = 0; col < COL_SIZE; col++) {
-					ss << maze_grid[row][col][hei];
+					ss << maze_grid[row][col][hei] << " ";
 				}
 				ss << endl;
 			}	
-			ss << endl;
+			if (hei < 4) {
+				ss << endl;
+			}
 		}
 	return ss.str();	
 }
@@ -72,14 +75,14 @@ string Pathfinder::toString() const {
 			for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
 				for(int row = 0; row < ROW_SIZE; row++) {
 					getline(file, line);
-						if (line.length() == 10) {
+						if (line.length() != 0) {
 							stringstream ss(line);
 							for(int col = 0; col < COL_SIZE; col++) {
 								int value;
 								ss >> value;
 								if (value == 0 || value == 1) {
 								// cout << "["<<row<<"]["<<col<<"]["<<hei<<"]="<<value<<endl;
-								maze_grid[row][col][hei] = value;
+									maze_grid[row][col][hei] = value;
 								}
 								else {
 									cout << "maze contains some number other than 0 and 1\n";
@@ -92,6 +95,7 @@ string Pathfinder::toString() const {
 							return false;
 						}
 				}
+				file.ignore();
 			}
 
 			if (maze_grid[0][0][0] == 1 && maze_grid[4][4][4] == 1) {
