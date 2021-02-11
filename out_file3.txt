@@ -30,3 +30,79 @@ toString
 0 0 0 0 0
 1 1 1 1 1
 
+solveMaze INVALID path given, path must begin at cell (0, 0, 0)
+Path Given:
+(4,4,4)
+
+importMaze Mazes/Solvable2.txt True
+toString
+1 0 1 1 1
+1 1 1 1 0
+0 1 0 0 1
+0 1 1 0 0
+0 0 0 0 1
+
+1 0 1 0 0
+1 0 1 0 0
+1 0 0 0 1
+1 0 0 1 1
+0 0 1 1 1
+
+1 1 0 0 0
+0 1 0 0 1
+1 0 0 0 0
+0 0 0 1 1
+0 1 1 0 0
+
+0 1 1 1 0
+1 1 0 1 1
+0 1 0 1 1
+0 0 1 0 0
+0 1 0 1 1
+
+0 0 1 1 0
+0 0 0 0 0
+0 1 1 0 1
+0 1 1 1 0
+0 1 1 1 1
+
+solveMaze INVALID path given, path must begin at cell (0, 0, 0)
+Path Given:
+(4,4,4)
+
+importMaze Mazes/Solvable3.txt True
+toString
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+
+solveMaze INVALID path given, path must begin at cell (0, 0, 0)
+Path Given:
+(4,4,4)
+
