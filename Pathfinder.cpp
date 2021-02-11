@@ -137,15 +137,15 @@ string Pathfinder::toString() const {
 	
 	
 	bool Pathfinder::find_maze_path(int grid[ROW_SIZE][COL_SIZE][HEIGHT_SIZE], int r, int c, int h) {
-	  cout << "find_maze_path ["<<r<<"]["<<c<<"]["<<h<<"]"<<endl;
-	  cout << this->toString();
+	  // cout << "find_maze_path ["<<r<<"]["<<c<<"]["<<h<<"]"<<endl;
+	  // cout << this->toString();
 	  if (r < 0 || c < 0 || h < 0 || r >= ROW_SIZE || c >= COL_SIZE || h >= HEIGHT_SIZE)
 	    return false;      // Cell is out of bounds.
 	  else if (grid[r][c][h] != BACKGROUND)
 	    return false;      // Cell is on barrier or dead end.
 	  else if (r == ROW_SIZE - 1 && c == COL_SIZE - 1 && h == HEIGHT_SIZE - 1) {
 	    grid[r][c][h] = PATH;         // Cell is on path
-	    solution.push_back("("+to_string(r)+","+to_string(c)+","+to_string(h)+")");
+	    solution.push_back("("+to_string(c)+", "+to_string(r)+", "+to_string(h)+")");
 	    return true;               // and is maze exit.
 	  }
 	  else { 
@@ -159,11 +159,11 @@ string Pathfinder::toString() const {
 	       || find_maze_path(grid, r, c + 1, h ) 
 				 || find_maze_path(grid, r, c , h + 1)
 				 || find_maze_path(grid, r, c , h - 1)) {
-	      solution.push_back("("+to_string(r)+","+to_string(c)+","+to_string(h)+")");
+	      solution.push_back("("+to_string(c)+", "+to_string(r)+", "+to_string(h)+")");
 	     return true;
 	    }
 	    else {
-	     grid[r][c][h] = TEMPORARY;  // Dead end.
+	    //  grid[r][c][h] = TEMPORARY;  // Dead end.
 	     return false;
 	   }
 	  }

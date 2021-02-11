@@ -1,22 +1,4 @@
 out_file1.txt
 out_file2.txt
-1 1 1 1 1						      |	1 1 1 1 0
-1 1 1 1 1						      |	1 1 1 1 0
-1 1 1 1 1						      |	1 1 1 0 1
-1 1 1 1 1						      |	1 1 1 1 0
-1 1 1 1 1						      |	1 1 1 1 0
-1 1 1 1 1						      |	1 1 1 0 1
 out_file3.txt
-solveMaze VALID solution given				      |	solveMaze INVALID path given, path must begin at cell (0, 0, 
-							      >	Path Given:
-							      >	(4,4,4)
-							      >
-solveMaze VALID solution given				      |	solveMaze INVALID path given, path must begin at cell (0, 0, 
-							      >	Path Given:
-							      >	(4,4,4)
-							      >
-solveMaze VALID solution given				      |	solveMaze INVALID path given, path must begin at cell (0, 0, 
-							      >	Path Given:
-							      >	(4,4,4)
-							      >
 out_file4.txt
