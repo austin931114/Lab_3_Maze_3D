@@ -1,4 +1,5 @@
 out_file1.txt
 out_file2.txt
+importMaze Mazes/Invalid1.txt False			      |	importMaze Mazes/Invalid1.txt True
 out_file3.txt
 out_file4.txt

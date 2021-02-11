@@ -29,7 +29,7 @@ toString
 1 1 1 1 1
 1 1 1 1 1
 
-importMaze Mazes/Invalid1.txt False
+importMaze Mazes/Invalid1.txt True
 toString
 1 1 1 1 1
 1 1 1 1 1

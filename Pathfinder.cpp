@@ -7,10 +7,8 @@
  * @param n -  The value to find
  * @return - True if found, false otherwise
  */
-
 string Pathfinder::toString() const {
 		stringstream ss;
-		
 		for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
 			for(int row = 0; row < ROW_SIZE; row++) {
 				for(int col = 0; col < COL_SIZE; col++) {
@@ -39,7 +37,7 @@ string Pathfinder::toString() const {
 	* in the entrance cell (0, 0, 0) and in the exit cell (4, 4, 4).  The generated maze may be
 	* solvable or unsolvable, and this method should be able to produce both kinds of mazes.
 	*/
-	void Pathfinder::createRandomMaze() {
+void Pathfinder::createRandomMaze() {
 		for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
 			for(int row = 0; row < ROW_SIZE; row++) {
 				for(int col = 0; col < COL_SIZE; col++) {
@@ -52,7 +50,7 @@ string Pathfinder::toString() const {
 		}
 		maze_grid[0][0][0] = 1;
 		maze_grid[4][4][4] = 1;
-	}
+}
 	//-----------------------------------------------------------------------------------------
 	
 	//Part 2-----------------------------------------------------------------------------------
@@ -70,7 +68,7 @@ string Pathfinder::toString() const {
 	* Returns:		bool
 	*				True if the maze is imported correctly; false otherwise
 	*/
-	bool Pathfinder::importMaze(string file_name) {
+bool Pathfinder::importMaze(string file_name) {
 		cout << "importMaze from "<<file_name<<endl;
 		ifstream file (file_name.c_str());
 
@@ -83,16 +81,14 @@ string Pathfinder::toString() const {
 				for(int row = 0; row < ROW_SIZE; row++) {
 						getline(file, line);
 						if (file.bad() || file.fail()) {
-							count += 1000;
+							count += 1000; // check if anything that is less than 125 item, so it will fail to getline
 						}
 						for (int i = 0; i < line.size(); i++){
 							if (!isdigit(line.at(i)) && line.at(i) != ' ') {
-								count += 1000;
+								count += 1000;  // check if anything is not a digit
 							}
 						}
-				
-						stringstream ss(line);
-						
+						stringstream ss(line);		
 						for(int col = 0; col < COL_SIZE; col++) {
 							int value;
 							ss >> value;
@@ -107,10 +103,10 @@ string Pathfinder::toString() const {
 							}
 						}
 				}
-						file.ignore();
+						file.ignore(); // ignote the space line between layers
 			} 
 			if (getline(file, line)) {
-				count += 1000;
+				count += 1000; // check if there is more than 125 items, more = getline TRUE
 			}
 				
 			if (test_maze[0][0][0] != 1 || test_maze[4][4][4] != 1 || count != 125) {
@@ -136,7 +132,7 @@ string Pathfinder::toString() const {
 
 	
 	
-	bool Pathfinder::find_maze_path(int grid[ROW_SIZE][COL_SIZE][HEIGHT_SIZE], int r, int c, int h) {
+bool Pathfinder::find_maze_path(int grid[ROW_SIZE][COL_SIZE][HEIGHT_SIZE], int r, int c, int h) {
 	  // cout << "find_maze_path ["<<r<<"]["<<c<<"]["<<h<<"]"<<endl;
 	  // cout << this->toString();
 	  if (r < 0 || c < 0 || h < 0 || r >= ROW_SIZE || c >= COL_SIZE || h >= HEIGHT_SIZE)
@@ -145,7 +141,8 @@ string Pathfinder::toString() const {
 	    return false;      // Cell is on barrier or dead end.
 	  else if (r == ROW_SIZE - 1 && c == COL_SIZE - 1 && h == HEIGHT_SIZE - 1) {
 	    grid[r][c][h] = PATH;         // Cell is on path
-	    solution.push_back("("+to_string(c)+", "+to_string(r)+", "+to_string(h)+")");
+	    // solution.push_back("("+to_string(c)+", "+to_string(r)+", "+to_string(h)+")");
+			solution.insert(solution.begin(), ("("+to_string(c)+", "+to_string(r)+", "+to_string(h)+")"));
 	    return true;               // and is maze exit.
 	  }
 	  else { 
@@ -159,14 +156,15 @@ string Pathfinder::toString() const {
 	       || find_maze_path(grid, r, c + 1, h ) 
 				 || find_maze_path(grid, r, c , h + 1)
 				 || find_maze_path(grid, r, c , h - 1)) {
-	      solution.push_back("("+to_string(c)+", "+to_string(r)+", "+to_string(h)+")");
+	      // solution.push_back("("+to_string(c)+", "+to_string(r)+", "+to_string(h)+")");
+				solution.insert(solution.begin(), ("("+to_string(c)+", "+to_string(r)+", "+to_string(h)+")"));
 	     return true;
 	    }
 	    else {
 	    //  grid[r][c][h] = TEMPORARY;  // Dead end.
 	     return false;
 	   }
-	  }
+  }
 	}
 	  //Part 3-----------------------------------------------------------------------------------
 	/*
@@ -203,25 +201,25 @@ vector<string> Pathfinder::solveMaze() {
 		cout <<s<< endl;
 
 	}
+	// If I need to swap the value
+	// int size;
+	// for (int i = 0; i < solution.size(); ++i) {
+	// 	if (solution.at(i) == "(0, 0, 0)") {
+	// 		size = i;
+	// 		break;
+	// 	}
+	// }
 
-	int size;
-	for (int i = 0; i < solution.size(); ++i) {
-		if (solution.at(i) == "(0, 0, 0)") {
-			size = i;
-			break;
-		}
-	}
-
-	if (!solution.empty()) {
-		string tempValue;
-		solution.resize(size + 1);
-		for (int i = 0; i < (solution.size() / 2); ++i) {
-			tempValue = solution.at(i);
-			solution.at(i) =  solution.at(solution.size() - 1 - i);
-			solution.at(solution.size() - 1 - i) = tempValue; 
-		}
-	}
+	// if (!solution.empty()) {
+	// 	string tempValue;
+	// 	solution.resize(size + 1);
+	// 	for (int i = 0; i < (solution.size() / 2); ++i) {
+	// 		tempValue = solution.at(i);
+	// 		solution.at(i) =  solution.at(solution.size() - 1 - i);
+	// 		solution.at(solution.size() - 1 - i) = tempValue; 
+	// 	}
+	// }
 
 
-		return solution;
-	}
+	return solution;
+}
