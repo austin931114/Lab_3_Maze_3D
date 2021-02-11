@@ -19,8 +19,19 @@ const int PATH = 3;
 class Pathfinder: public PathfinderInterface
 {
 public:
-	Pathfinder() {}
+	Pathfinder() {
+		for(int hei = 0; hei < HEIGHT_SIZE; hei++) {
+			for(int row = 0; row < ROW_SIZE; row++) {
+				for(int col = 0; col < COL_SIZE; col++) {
+						maze_grid[hei][row][col] = 1;
+					}
+				}		
+		}
+	}
 	~Pathfinder() {}
+
+	int maze_grid[HEIGHT_SIZE][ROW_SIZE][COL_SIZE];
+	
 
 	//Part 1-----------------------------------------------------------------------------------
 	/*
@@ -96,8 +107,9 @@ public:
 	*/
 	vector<string> solveMaze();
 protected:
-	bool find_maze_path(int grid[ROW_SIZE][COL_SIZE][HEIGHT_SIZE], int r, int c, int h);
+	bool find_maze_path(int grid[HEIGHT_SIZE][ROW_SIZE][COL_SIZE], int h, int r, int c);
 	vector<string> solution;
-	int maze_grid[ROW_SIZE][COL_SIZE][HEIGHT_SIZE]; // To hold values
+
+	 // To hold values
 	//-----------------------------------------------------------------------------------------
 };

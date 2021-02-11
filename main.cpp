@@ -56,15 +56,6 @@ int main() {
 		ofs.close();
 	}
 	std::cout << "end" << std::endl; // indicate that the program has successfuly executed all instructions
-	// string temp = "1a";
-	// stringstream name(temp);
-	// char i;
-	// char j;
-
-	// name >> i;
-	// cout << i << endl;
-	// name >> j;
-	// cout << j << endl;
 	 return 0;
 }
 
@@ -178,6 +169,7 @@ std::string is_valid_path(vector<string> &vec, std::string mazeString) {
 			return "INVALID path given, coordinates must represent a cell within the maze\n" + pathSS.str();
 		}
 		if (maze[newXLoc + (5 * newYLoc) + (25 * newZLoc)] != '1') { // coord was not on a valid path
+		  cout << maze[newXLoc + (5 * newYLoc) + (25 * newZLoc)] << endl;
 			cout << newXLoc << " " << newYLoc << " " << newZLoc << " " << maze[newXLoc + (5 * newYLoc) + (25 * newZLoc)] << endl;
 			return "INVALID path given, path attempted to go through a blocked cell\n" + pathSS.str();
 		}
